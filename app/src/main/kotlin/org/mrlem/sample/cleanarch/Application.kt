@@ -3,7 +3,7 @@ package org.mrlem.sample.cleanarch
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import org.mrlem.sample.arch.BaseApplication
-import org.mrlem.sample.cleanarch.features.main.MainViewModel
+import org.mrlem.sample.cleanarch.hud.HudViewModel
 import org.mrlem.sample.data.repositories.SomethingRepositoryImpl
 import org.mrlem.sample.domain.repositories.SomethingRepository
 
@@ -16,7 +16,7 @@ class Application : BaseApplication() {
             single<SomethingRepository> { SomethingRepositoryImpl() }
 
             // domain -> presentation
-            viewModel { MainViewModel(get()) }
+            viewModel { HudViewModel() }
         }
     )
 

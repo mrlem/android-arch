@@ -1,7 +1,6 @@
-package org.mrlem.sample.cleanarch.features.main
+package org.mrlem.sample.cleanarch
 
 import org.mrlem.sample.arch.BaseActivity
-import org.mrlem.sample.cleanarch.R
 
 class MainActivity : BaseActivity() {
 

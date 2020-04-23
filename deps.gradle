@@ -34,6 +34,9 @@ ext {
             ],
             tests: [
                     "junit:junit:4.13"
+            ],
+            mapbox: [
+                    "com.mapbox.mapboxsdk:mapbox-android-sdk:9.1.0"
             ]
     ]
 }

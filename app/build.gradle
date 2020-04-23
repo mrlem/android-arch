@@ -16,6 +16,9 @@ dependencies {
     implementation project(":domain")
     implementation project(":data")
 
+    // external
+    implementation libraries.mapbox
+
     // test
     testImplementation libraries.tests
     androidTestImplementation libraries.android.tests
