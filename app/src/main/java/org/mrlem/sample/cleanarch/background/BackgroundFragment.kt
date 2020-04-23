@@ -1,16 +1,13 @@
 package org.mrlem.sample.cleanarch.background
 
-import android.transition.TransitionManager
 import android.view.*
 import android.view.View.*
-import androidx.constraintlayout.widget.ConstraintSet
-import androidx.lifecycle.Observer
 import androidx.lifecycle.distinctUntilChanged
 import androidx.lifecycle.map
 import kotlinx.android.synthetic.main.fragment_background.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.mrlem.sample.arch.BaseFragment
-import org.mrlem.sample.cleanarch.AllTogetherTransition
+import org.mrlem.sample.arch.ext.android.bind
 import org.mrlem.sample.cleanarch.MapFragment
 import org.mrlem.sample.cleanarch.R
 import org.mrlem.sample.cleanarch.hud.HudViewModel
@@ -21,7 +18,8 @@ class BackgroundFragment : BaseFragment() {
     override val layout = R.layout.fragment_background
     private val viewModel by sharedViewModel<HudViewModel>()
     private val mapFragment by lazy { childFragmentManager.findFragmentById(R.id.map) as MapFragment }
-    private val constraints = ConstraintSet()
+
+    private val transitions by lazy { Transitions(container) }
 
     // split event handling
     private var dragging = false
@@ -47,7 +45,7 @@ class BackgroundFragment : BaseFragment() {
     }
 
     override fun initViews() {
-        constraints.clone(background)
+        transitions.applyState(viewModel.currentState.splitMode)
 
         // when the view get rendered, view will be measured, so we know which padding to apply
         requireView().post {
@@ -63,21 +61,10 @@ class BackgroundFragment : BaseFragment() {
         viewModel.state
             .map { it.splitMode }
             .distinctUntilChanged()
-            .observe(viewLifecycleOwner, Observer { splitMode ->
-                val newConstraints = ConstraintSet()
-                newConstraints.clone(constraints)
-                newConstraints.setVisibility(
-                    R.id.handle,
-                    if (splitMode is SplitMode.Both) VISIBLE else INVISIBLE
-                )
-                newConstraints.setGuidelinePercent(R.id.split, splitMode.ratio)
-                if (!dragging) {
-                    TransitionManager.beginDelayedTransition(background, AllTogetherTransition())
-                }
-                newConstraints.applyTo(background)
-
+            .bind(viewLifecycleOwner) { splitMode ->
+                transitions.applyState(splitMode, !dragging)
                 mapFragment.setPadding((splitMode.ratio * requireView().width).toInt(), !dragging)
-            })
+            }
     }
 
     ///////////////////////////////////////////////////////////////////////////
