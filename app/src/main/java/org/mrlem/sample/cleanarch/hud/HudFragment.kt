@@ -18,19 +18,19 @@ class HudFragment : BaseFragment() {
     override val layout = R.layout.fragment_hud
     private val viewModel by sharedViewModel<HudViewModel>()
 
-    private val videoFragment by lazy { childFragmentManager.findFragmentById(R.id.video) }
-    private val mapFragment by lazy { childFragmentManager.findFragmentById(R.id.map) }
+    private val videoFragment by lazy { childFragmentManager.findFragmentById(R.id.video)!! }
+    private val mapFragment by lazy { childFragmentManager.findFragmentById(R.id.map)!! }
 
     private val constraints = ConstraintSet()
 
     override fun initViews() {
-        constraints.clone(view!!.hud)
-        applyTransitions(view!!, viewModel.state.value!!, false)
+        constraints.clone(requireView().hud)
+        applyTransitions(requireView(), viewModel.currentState, false)
     }
 
     override fun initEvents() {
-        videoFragment?.view?.setOnClickListener { viewModel.updateSplitMode(SplitMode.Both(0.75f)) }
-        mapFragment?.view?.setOnClickListener { viewModel.updateSplitMode(SplitMode.Both(0.75f)) }
+        videoFragment.requireView().setOnClickListener { viewModel.updateSplitMode(SplitMode.Both(0.75f)) }
+        mapFragment.requireView().setOnClickListener { viewModel.updateSplitMode(SplitMode.Both(0.75f)) }
         leftPanelButton.setOnClickListener { viewModel.updatePanelMode(if (viewModel.currentState.panelMode != PanelMode.Left) PanelMode.Left else PanelMode.None) }
         rightPanelButton.setOnClickListener { viewModel.updatePanelMode(if (viewModel.currentState.panelMode != PanelMode.Right) PanelMode.Right else PanelMode.None) }
     }
@@ -39,7 +39,7 @@ class HudFragment : BaseFragment() {
         viewModel.state
             .distinctUntilChanged()
             .observe(viewLifecycleOwner, Observer { state ->
-                applyTransitions(view!!, state)
+                applyTransitions(requireView(), state)
             })
     }
 
@@ -65,7 +65,7 @@ class HudFragment : BaseFragment() {
 
     private fun ConstraintSet.applyVideoConstraints(splitMode: SplitMode) {
         val hasVideo = splitMode == SplitMode.Right
-        videoFragment?.view?.apply {
+        videoFragment.requireView().apply {
             isVisible = hasVideo
         }
         if (!hasVideo) {
@@ -77,7 +77,7 @@ class HudFragment : BaseFragment() {
 
     private fun ConstraintSet.applyMapConstraints(splitMode: SplitMode) {
         val hasMap = splitMode == SplitMode.Left
-        mapFragment?.view?.apply {
+        mapFragment.requireView().apply {
             isVisible = hasMap
         }
         if (!hasMap) {

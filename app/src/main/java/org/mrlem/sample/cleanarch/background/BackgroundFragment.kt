@@ -46,10 +46,20 @@ class BackgroundFragment : BaseFragment() {
         true
     }
 
-    override fun initEvents() {
+    override fun initViews() {
         constraints.clone(background)
 
+        // when the view get rendered, view will be measured, so we know which padding to apply
+        requireView().post {
+            mapFragment.setPadding(split.x.toInt(), false)
+        }
+    }
+
+    override fun initEvents() {
         handle.setOnTouchListener(touchListener)
+    }
+
+    override fun initObservations() {
         viewModel.state
             .map { it.splitMode }
             .distinctUntilChanged()
@@ -60,31 +70,14 @@ class BackgroundFragment : BaseFragment() {
                     R.id.handle,
                     if (splitMode is SplitMode.Both) VISIBLE else INVISIBLE
                 )
-                val ratio = when (splitMode) {
-                    SplitMode.Left -> 1f
-                    SplitMode.Right -> 0f
-                    is SplitMode.Both -> splitMode.ratio // xml constant shared with xml
-                }
-                newConstraints.setGuidelinePercent(R.id.split, ratio)
+                newConstraints.setGuidelinePercent(R.id.split, splitMode.ratio)
                 if (!dragging) {
                     TransitionManager.beginDelayedTransition(background, AllTogetherTransition())
                 }
                 newConstraints.applyTo(background)
 
-                when (splitMode) {
-                    is SplitMode.Right -> mapFragment.setPadding(0, true)
-                    is SplitMode.Left -> mapFragment.setPadding(view!!.width, true)
-                    is SplitMode.Both -> mapFragment.setPadding(
-                        (view!!.width * ratio).toInt(),
-                        !dragging
-                    )
-                }
+                mapFragment.setPadding((splitMode.ratio * requireView().width).toInt(), !dragging)
             })
-
-        // when the view get rendered, view will be measured, so we know which padding to apply
-        view!!.post {
-            mapFragment.setPadding(split.x.toInt(), false)
-        }
     }
 
     ///////////////////////////////////////////////////////////////////////////
