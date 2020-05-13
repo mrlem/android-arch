@@ -8,7 +8,6 @@ import android.view.animation.AccelerateDecelerateInterpolator
 class AllTogetherTransition : TransitionSet() {
 
     init {
-        this.
         startDelay = 0
         duration = DURATION
         interpolator = INTERPOLATOR
