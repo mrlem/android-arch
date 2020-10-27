@@ -14,8 +14,8 @@ class HudFragment : BaseFragment() {
     override val layout = R.layout.fragment_hud
     private val viewModel by sharedViewModel<HudViewModel>()
 
-    private val videoFragment by lazy { childFragmentManager.findFragmentById(R.id.video)!! }
-    private val mapFragment by lazy { childFragmentManager.findFragmentById(R.id.map)!! }
+    private val videoView by lazy { childFragmentManager.findFragmentById(R.id.video)!!.requireView() }
+    private val mapView by lazy { childFragmentManager.findFragmentById(R.id.map)!!.requireView() }
 
     private val transitions by lazy { Transitions(requireView().hud) }
 
@@ -24,18 +24,20 @@ class HudFragment : BaseFragment() {
     }
 
     override fun initEvents() {
-        videoFragment.requireView().setOnClickListener { viewModel.updateSplitMode(SplitMode.Both(0.75f)) }
-        mapFragment.requireView().setOnClickListener { viewModel.updateSplitMode(SplitMode.Both(0.75f)) }
-        leftPanelButton.setOnClickListener { viewModel.updatePanelMode(if (viewModel.currentState.panelMode != PanelMode.Left) PanelMode.Left else PanelMode.None) }
-        rightPanelButton.setOnClickListener { viewModel.updatePanelMode(if (viewModel.currentState.panelMode != PanelMode.Right) PanelMode.Right else PanelMode.None) }
+        videoView.setOnClickListener { viewModel.updateSplitMode(SplitMode.Both(0.75f)) }
+        mapView.setOnClickListener { viewModel.updateSplitMode(SplitMode.Both(0.75f)) }
+
+        val panelMode = viewModel.currentState.panelMode
+        leftPanelButton.setOnClickListener { viewModel.updatePanelMode(if (panelMode != PanelMode.Left) PanelMode.Left else PanelMode.None) }
+        rightPanelButton.setOnClickListener { viewModel.updatePanelMode(if (panelMode != PanelMode.Right) PanelMode.Right else PanelMode.None) }
     }
 
     override fun initObservations() {
         viewModel.state
             .distinctUntilChanged()
             .observe(viewLifecycleOwner, Observer { state ->
-                videoFragment.requireView().isVisible = state.splitMode.hasMiniVideo
-                mapFragment.requireView().isVisible = state.splitMode.hasMiniMap
+                videoView.isVisible = state.splitMode.hasMiniVideo
+                mapView.isVisible = state.splitMode.hasMiniMap
                 transitions.applyState(state)
             })
     }
