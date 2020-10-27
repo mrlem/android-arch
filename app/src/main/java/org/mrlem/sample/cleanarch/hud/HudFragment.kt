@@ -34,8 +34,8 @@ class HudFragment : BaseFragment() {
         viewModel.state
             .distinctUntilChanged()
             .observe(viewLifecycleOwner, Observer { state ->
-                videoFragment.requireView().isVisible = state.splitMode == SplitMode.Right
-                mapFragment.requireView().isVisible = state.splitMode == SplitMode.Left
+                videoFragment.requireView().isVisible = state.splitMode.hasMiniVideo
+                mapFragment.requireView().isVisible = state.splitMode.hasMiniMap
                 transitions.applyState(state)
             })
     }

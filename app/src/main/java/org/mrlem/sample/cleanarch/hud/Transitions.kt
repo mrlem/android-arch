@@ -22,8 +22,7 @@ class Transitions(root: ConstraintLayout) : BaseTransitions<HudState>(root) {
     ///////////////////////////////////////////////////////////////////////////
 
     private fun ConstraintSet.applyVideoConstraints(splitMode: SplitMode) {
-        val hasVideo = splitMode == SplitMode.Right
-        if (!hasVideo) {
+        if (!splitMode.hasMiniVideo) {
             clear(R.id.video, ConstraintSet.START)
             connect(R.id.video, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.START)
             setVerticalBias(R.id.video, 0.5f)
@@ -31,8 +30,7 @@ class Transitions(root: ConstraintLayout) : BaseTransitions<HudState>(root) {
     }
 
     private fun ConstraintSet.applyMapConstraints(splitMode: SplitMode) {
-        val hasMap = splitMode == SplitMode.Left
-        if (!hasMap) {
+        if (!splitMode.hasMiniMap) {
             clear(R.id.map, ConstraintSet.END)
             connect(R.id.map, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.END)
             setVerticalBias(R.id.map, 0.5f)

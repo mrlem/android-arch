@@ -24,6 +24,8 @@ data class HudState(
 sealed class SplitMode {
 
     abstract val ratio: Float
+    val hasMiniVideo get() = this == Right
+    val hasMiniMap get() = this == Left
 
     object Left : SplitMode() {
         override val ratio = 1f
