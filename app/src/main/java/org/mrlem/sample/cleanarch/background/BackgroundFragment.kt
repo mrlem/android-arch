@@ -1,5 +1,6 @@
 package org.mrlem.sample.cleanarch.background
 
+import android.annotation.SuppressLint
 import android.view.*
 import android.view.View.*
 import androidx.lifecycle.distinctUntilChanged
@@ -24,6 +25,7 @@ class BackgroundFragment : BaseFragment() {
     // split event handling
     private var dragging = false
     private var dx = 0f
+    @SuppressLint("ClickableViewAccessibility")
     private val touchListener = OnTouchListener { _, event ->
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
