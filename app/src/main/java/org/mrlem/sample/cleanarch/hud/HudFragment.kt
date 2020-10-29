@@ -35,11 +35,11 @@ class HudFragment : BaseFragment() {
     override fun initObservations() {
         viewModel.state
             .distinctUntilChanged()
-            .observe(viewLifecycleOwner, Observer { state ->
+            .observe(viewLifecycleOwner) { state ->
                 videoView.isVisible = state.splitMode.hasMiniVideo
                 mapView.isVisible = state.splitMode.hasMiniMap
                 transitions.applyState(state)
-            })
+            }
     }
 
 }

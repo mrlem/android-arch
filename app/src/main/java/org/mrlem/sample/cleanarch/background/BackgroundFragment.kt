@@ -8,7 +8,6 @@ import androidx.lifecycle.map
 import kotlinx.android.synthetic.main.fragment_background.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.mrlem.sample.arch.BaseFragment
-import org.mrlem.sample.arch.ext.android.bind
 import org.mrlem.sample.cleanarch.MapFragment
 import org.mrlem.sample.cleanarch.R
 import org.mrlem.sample.cleanarch.hud.HudViewModel
@@ -63,7 +62,7 @@ class BackgroundFragment : BaseFragment() {
         viewModel.state
             .map { it.splitMode }
             .distinctUntilChanged()
-            .bind(viewLifecycleOwner) { splitMode ->
+            .observe(viewLifecycleOwner) { splitMode ->
                 transitions.applyState(splitMode, !dragging)
                 mapFragment.setPadding((splitMode.ratio * requireView().width).toInt(), !dragging)
             }
