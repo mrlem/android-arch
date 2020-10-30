@@ -1,4 +1,4 @@
-package org.mrlem.sample.cleanarch.hud
+package org.mrlem.sample.cleanarch.ui.hud
 
 import androidx.core.view.isVisible
 import androidx.lifecycle.distinctUntilChanged

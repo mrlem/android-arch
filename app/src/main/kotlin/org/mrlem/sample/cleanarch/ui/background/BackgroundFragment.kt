@@ -1,4 +1,4 @@
-package org.mrlem.sample.cleanarch.background
+package org.mrlem.sample.cleanarch.ui.background
 
 import android.annotation.SuppressLint
 import android.view.*
@@ -8,9 +8,9 @@ import androidx.lifecycle.map
 import kotlinx.android.synthetic.main.fragment_background.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.mrlem.sample.arch.BaseFragment
-import org.mrlem.sample.cleanarch.MapFragment
+import org.mrlem.sample.cleanarch.ui.map.MapFragment
 import org.mrlem.sample.cleanarch.R
-import org.mrlem.sample.cleanarch.hud.HudViewModel
+import org.mrlem.sample.cleanarch.ui.hud.HudViewModel
 
 class BackgroundFragment : BaseFragment() {
 

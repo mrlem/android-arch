@@ -1,12 +1,12 @@
-package org.mrlem.sample.cleanarch.background
+package org.mrlem.sample.cleanarch.ui.background
 
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import org.mrlem.sample.arch.AllTogetherTransition
 import org.mrlem.sample.arch.BaseTransitions
-import org.mrlem.sample.cleanarch.AllTogetherTransition
 import org.mrlem.sample.cleanarch.R
-import org.mrlem.sample.cleanarch.hud.SplitMode
+import org.mrlem.sample.cleanarch.ui.hud.SplitMode
 
 class Transitions(root: ConstraintLayout) : BaseTransitions<SplitMode>(root) {
 

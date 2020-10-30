@@ -1,4 +1,4 @@
-package org.mrlem.sample.cleanarch.features.main
+package org.mrlem.sample.cleanarch.ui.main
 
 import io.reactivex.rxkotlin.addTo
 import org.mrlem.sample.arch.BaseViewModel

@@ -1,4 +1,4 @@
-package org.mrlem.sample.cleanarch.hud
+package org.mrlem.sample.cleanarch.ui.hud
 
 import org.mrlem.sample.arch.BaseViewModel
 

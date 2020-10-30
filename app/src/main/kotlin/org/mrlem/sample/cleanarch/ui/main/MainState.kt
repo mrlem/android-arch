@@ -1,4 +1,4 @@
-package org.mrlem.sample.cleanarch.features.main
+package org.mrlem.sample.cleanarch.ui.main
 
 import org.mrlem.sample.arch.State
 

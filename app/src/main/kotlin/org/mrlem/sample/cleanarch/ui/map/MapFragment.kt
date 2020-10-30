@@ -1,4 +1,4 @@
-package org.mrlem.sample.cleanarch
+package org.mrlem.sample.cleanarch.ui.map
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -9,7 +9,9 @@ import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.maps.SupportMapFragment
+import org.mrlem.sample.arch.AllTogetherTransition
 import org.mrlem.sample.arch.BaseFragment
+import org.mrlem.sample.cleanarch.R
 
 class MapFragment : BaseFragment() {
 

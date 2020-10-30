@@ -1,9 +1,9 @@
-package org.mrlem.sample.cleanarch.hud
+package org.mrlem.sample.cleanarch.ui.hud
 
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import org.mrlem.sample.arch.AllTogetherTransition
 import org.mrlem.sample.arch.BaseTransitions
-import org.mrlem.sample.cleanarch.AllTogetherTransition
 import org.mrlem.sample.cleanarch.R
 
 class Transitions(root: ConstraintLayout) : BaseTransitions<HudState>(root) {
