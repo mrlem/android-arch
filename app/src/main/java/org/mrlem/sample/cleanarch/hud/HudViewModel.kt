@@ -1,50 +1,39 @@
 package org.mrlem.sample.cleanarch.hud
 
-import androidx.annotation.FloatRange
 import org.mrlem.sample.arch.BaseViewModel
-import org.mrlem.sample.arch.State
 
 class HudViewModel : BaseViewModel<HudState>(HudState()) {
 
-    fun updateSplitMode(mode: SplitMode) {
-        updateState { copy(splitMode = mode) }
-    }
+    ///////////////////////////////////////////////////////////////////////////
+    // Panel related
+    ///////////////////////////////////////////////////////////////////////////
 
-    fun updatePanelMode(mode: PanelMode) {
+    fun toggleLeftPane() {
+        val mode = if (currentState.panelMode != PanelMode.Left) PanelMode.Left else PanelMode.None
         updateState { copy(panelMode = mode) }
     }
 
-}
-
-data class HudState(
-    var splitMode: SplitMode = SplitMode.Both(0.75f),
-    var panelMode: PanelMode = PanelMode.None
-) : State
-
-sealed class SplitMode {
-
-    abstract val ratio: Float
-    val hasMiniVideo get() = this == Right
-    val hasMiniMap get() = this == Left
-
-    object Left : SplitMode() {
-        override val ratio = 1f
+    fun toggleRightPane() {
+        val mode = if (currentState.panelMode != PanelMode.Right) PanelMode.Right else PanelMode.None
+        updateState { copy(panelMode = mode) }
     }
 
-    object Right : SplitMode() {
-        override val ratio = 0f
+    ///////////////////////////////////////////////////////////////////////////
+    // Split related
+    ///////////////////////////////////////////////////////////////////////////
+
+    fun collapseSplitRight() {
+        updateState { copy(splitMode = SplitMode.Right) }
     }
 
-    data class Both(
-        @FloatRange(from = 0.0, to = 1.0) override val ratio: Float
-    ) : SplitMode()
+    fun collapseSplitLeft() {
+        updateState { copy(splitMode = SplitMode.Left) }
+    }
 
-}
+    fun adjustSplit(ratio: Float) {
+        updateState { copy(splitMode = SplitMode.Both(ratio)) }
+    }
 
-sealed class PanelMode {
-
-    object Left : PanelMode()
-    object Right : PanelMode()
-    object None : PanelMode()
+    fun restoreSplit() = adjustSplit(0.75f)
 
 }

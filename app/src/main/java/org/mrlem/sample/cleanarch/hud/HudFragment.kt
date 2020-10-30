@@ -1,7 +1,6 @@
 package org.mrlem.sample.cleanarch.hud
 
 import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
 import androidx.lifecycle.distinctUntilChanged
 import kotlinx.android.synthetic.main.fragment_hud.*
 import kotlinx.android.synthetic.main.fragment_hud.view.*
@@ -24,12 +23,11 @@ class HudFragment : BaseFragment() {
     }
 
     override fun initEvents() {
-        videoView.setOnClickListener { viewModel.updateSplitMode(SplitMode.Both(0.75f)) }
-        mapView.setOnClickListener { viewModel.updateSplitMode(SplitMode.Both(0.75f)) }
+        videoView.setOnClickListener { viewModel.restoreSplit() }
+        mapView.setOnClickListener { viewModel.restoreSplit() }
 
-        val panelMode = viewModel.currentState.panelMode
-        leftPanelButton.setOnClickListener { viewModel.updatePanelMode(if (panelMode != PanelMode.Left) PanelMode.Left else PanelMode.None) }
-        rightPanelButton.setOnClickListener { viewModel.updatePanelMode(if (panelMode != PanelMode.Right) PanelMode.Right else PanelMode.None) }
+        leftPanelButton.setOnClickListener { viewModel.toggleLeftPane() }
+        rightPanelButton.setOnClickListener { viewModel.toggleRightPane() }
     }
 
     override fun initObservations() {

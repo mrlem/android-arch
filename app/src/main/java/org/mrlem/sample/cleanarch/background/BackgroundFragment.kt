@@ -11,7 +11,6 @@ import org.mrlem.sample.arch.BaseFragment
 import org.mrlem.sample.cleanarch.MapFragment
 import org.mrlem.sample.cleanarch.R
 import org.mrlem.sample.cleanarch.hud.HudViewModel
-import org.mrlem.sample.cleanarch.hud.SplitMode
 
 class BackgroundFragment : BaseFragment() {
 
@@ -76,14 +75,14 @@ class BackgroundFragment : BaseFragment() {
         when {
             ratio < magnetismDistance -> {
                 dragging = false
-                viewModel.updateSplitMode(SplitMode.Right)
+                viewModel.collapseSplitRight()
             }
             ratio > 1 - magnetismDistance -> {
                 dragging = false
-                viewModel.updateSplitMode(SplitMode.Left)
+                viewModel.collapseSplitLeft()
             }
             else -> {
-                viewModel.updateSplitMode(SplitMode.Both(ratio))
+                viewModel.adjustSplit(ratio)
             }
         }
     }
