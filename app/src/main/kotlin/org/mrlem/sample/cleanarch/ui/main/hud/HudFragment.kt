@@ -1,6 +1,5 @@
 package org.mrlem.sample.cleanarch.ui.main.hud
 
-import androidx.core.view.isVisible
 import androidx.lifecycle.distinctUntilChanged
 import kotlinx.android.synthetic.main.fragment_hud.*
 import kotlinx.android.synthetic.main.fragment_hud.view.*
@@ -16,7 +15,7 @@ class HudFragment : BaseFragment() {
     private val videoView by lazy { childFragmentManager.findFragmentById(R.id.video)!!.requireView() }
     private val mapView by lazy { childFragmentManager.findFragmentById(R.id.map)!!.requireView() }
 
-    private val transitions by lazy { Transitions(requireView().hud) }
+    private val transitions by lazy { Transitions(requireView().hud, videoView, mapView) }
 
     override fun initViews() {
         transitions.applyState(viewModel.currentState)
@@ -33,11 +32,7 @@ class HudFragment : BaseFragment() {
     override fun initObservations() {
         viewModel.state
             .distinctUntilChanged()
-            .observe(viewLifecycleOwner) { state ->
-                videoView.isVisible = state.splitMode.hasMiniVideo
-                mapView.isVisible = state.splitMode.hasMiniMap
-                transitions.applyState(state)
-            }
+            .observe(viewLifecycleOwner, transitions::applyState)
     }
 
 }

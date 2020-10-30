@@ -1,12 +1,18 @@
 package org.mrlem.sample.cleanarch.ui.main.hud
 
+import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.view.isVisible
 import org.mrlem.sample.arch.AllTogetherTransition
 import org.mrlem.sample.arch.BaseTransitions
 import org.mrlem.sample.cleanarch.R
 
-class Transitions(root: ConstraintLayout) : BaseTransitions<HudState>(root) {
+class Transitions(
+    root: ConstraintLayout,
+    private val videoView: View,
+    private val mapView: View
+) : BaseTransitions<HudState>(root) {
 
     override val transition = AllTogetherTransition()
 
@@ -22,6 +28,7 @@ class Transitions(root: ConstraintLayout) : BaseTransitions<HudState>(root) {
     ///////////////////////////////////////////////////////////////////////////
 
     private fun ConstraintSet.applyVideoConstraints(splitMode: SplitMode) {
+        videoView.isVisible = splitMode.hasMiniVideo
         if (!splitMode.hasMiniVideo) {
             clear(R.id.video, ConstraintSet.START)
             connect(R.id.video, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.START)
@@ -30,6 +37,7 @@ class Transitions(root: ConstraintLayout) : BaseTransitions<HudState>(root) {
     }
 
     private fun ConstraintSet.applyMapConstraints(splitMode: SplitMode) {
+        mapView.isVisible = splitMode.hasMiniMap
         if (!splitMode.hasMiniMap) {
             clear(R.id.map, ConstraintSet.END)
             connect(R.id.map, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.END)
