@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.main.MainActivity">
 
     <fragment
         android:id="@+id/background"
-        class="org.mrlem.sample.cleanarch.ui.background.BackgroundFragment"
+        class="org.mrlem.sample.cleanarch.ui.main.background.BackgroundFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/fragment_background" />
@@ -16,7 +16,7 @@
         android:id="@+id/hud"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="org.mrlem.sample.cleanarch.ui.hud.HudFragment"
+        class="org.mrlem.sample.cleanarch.ui.main.hud.HudFragment"
         tools:layout="@layout/fragment_hud" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

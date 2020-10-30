@@ -1,4 +1,4 @@
-package org.mrlem.sample.cleanarch.ui.hud
+package org.mrlem.sample.cleanarch.ui.main.hud
 
 import androidx.annotation.FloatRange
 import org.mrlem.sample.arch.State

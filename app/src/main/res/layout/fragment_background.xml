@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/video"
-        class="org.mrlem.sample.cleanarch.ui.video.VideoFragment"
+        class="org.mrlem.sample.cleanarch.ui.main.hud.video.VideoFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toStartOf="@id/split"
@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/map"
-        class="org.mrlem.sample.cleanarch.ui.map.MapFragment"
+        class="org.mrlem.sample.cleanarch.ui.main.hud.map.MapFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

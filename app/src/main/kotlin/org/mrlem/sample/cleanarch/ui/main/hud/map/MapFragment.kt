@@ -1,4 +1,4 @@
-package org.mrlem.sample.cleanarch.ui.map
+package org.mrlem.sample.cleanarch.ui.main.hud.map
 
 import android.animation.ValueAnimator
 import android.content.Context

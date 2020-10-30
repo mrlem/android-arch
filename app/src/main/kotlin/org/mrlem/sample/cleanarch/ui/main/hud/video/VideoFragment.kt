@@ -1,4 +1,4 @@
-package org.mrlem.sample.cleanarch.ui.video
+package org.mrlem.sample.cleanarch.ui.main.hud.video
 
 import org.mrlem.sample.arch.BaseFragment
 import org.mrlem.sample.cleanarch.R

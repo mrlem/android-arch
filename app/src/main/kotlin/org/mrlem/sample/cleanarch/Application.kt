@@ -3,7 +3,7 @@ package org.mrlem.sample.cleanarch
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import org.mrlem.sample.arch.BaseApplication
-import org.mrlem.sample.cleanarch.ui.hud.HudViewModel
+import org.mrlem.sample.cleanarch.ui.main.hud.HudViewModel
 import org.mrlem.sample.data.repositories.SomethingRepositoryImpl
 import org.mrlem.sample.domain.repositories.SomethingRepository
 
