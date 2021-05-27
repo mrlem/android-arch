@@ -17,6 +17,7 @@ android {
 
 dependencies {
     // external
+    api(kotlin("stdlib"))
     api(Deps.Android.constraintlayout)
     api(Deps.Android.viewbinding)
     api(Deps.Android.coreKtx)

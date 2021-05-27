@@ -8,6 +8,7 @@ plugins {
 
 dependencies {
     // external
+    api(kotlin("stdlib"))
     api(Deps.Rx.all)
     api(Deps.Retrofit.all)
 }
