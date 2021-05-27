@@ -1,4 +1,4 @@
-## Android architecture base
+# Android architecture base
 
 Provides a set of tools to make it easy to create clean android applications.
 
