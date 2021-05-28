@@ -18,12 +18,13 @@ android {
 dependencies {
     // external
     api(kotlin("stdlib"))
-    api(Deps.Android.constraintlayout)
-    api(Deps.Android.viewbinding)
-    api(Deps.Android.coreKtx)
     api(Deps.Android.activityKtx)
+    api(Deps.Android.constraintlayout)
+    api(Deps.Android.coreKtx)
     api(Deps.Android.fragmentKtx)
     api(Deps.Android.liveDataKtx)
+    api(Deps.Android.material)
+    api(Deps.Android.viewbinding)
     api(Deps.Koin.all)
     api(Deps.Rx.all)
 }

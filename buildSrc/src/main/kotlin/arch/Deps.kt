@@ -9,6 +9,7 @@ object Deps {
         val fragmentKtx = "androidx.fragment:fragment-ktx:1.3.3"
         val coreKtx = "androidx.core:core-ktx:1.3.2"
         val liveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
+        val material = "com.google.android.material:material:1.3.0"
     }
 
     object Koin {
