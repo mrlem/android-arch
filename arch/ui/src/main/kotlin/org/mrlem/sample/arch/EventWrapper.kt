@@ -20,7 +20,7 @@ package org.mrlem.sample.arch
  *
  * see [Google's todoapp](https://github.com/android/architecture-samples/blob/main/app/src/main/java/com/example/android/architecture/blueprints/todoapp/Event.kt)
  */
-open class BaseEvent<out T>(private val content: T) {
+open class EventWrapper<out T>(private val content: T) {
 
     @Suppress("MemberVisibilityCanBePrivate")
     var hasBeenHandled = false

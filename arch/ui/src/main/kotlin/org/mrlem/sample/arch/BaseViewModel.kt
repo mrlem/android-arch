@@ -14,7 +14,7 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
  * - handy callbacks to know when the view-model is being used or not
  * - rx composite disposables
  */
-abstract class BaseViewModel<State : BaseState, Event : BaseEvent<*>>(initialState: State) : ViewModel() {
+abstract class BaseViewModel<State : BaseState, Event>(initialState: State) : ViewModel() {
 
     private val _state = object : MutableLiveData<State>(initialState) {
         override fun onActive() = this@BaseViewModel.onStart()
@@ -30,12 +30,12 @@ abstract class BaseViewModel<State : BaseState, Event : BaseEvent<*>>(initialSta
      */
     val state: LiveData<State> = _state
 
-    private val _events = MutableLiveData<Event>()
+    private val _events = MutableLiveData<EventWrapper<Event>>()
 
     /**
      * LiveData of events.
      */
-    val events: LiveData<Event> = _events
+    val events: LiveData<EventWrapper<Event>> = _events
 
     /**
      * Current state.
@@ -65,7 +65,7 @@ abstract class BaseViewModel<State : BaseState, Event : BaseEvent<*>>(initialSta
      * Send an event.
      */
     protected  fun notifyEvent(event: Event) {
-        _events.value = event
+        _events.value = EventWrapper(event)
     }
 
     /**
