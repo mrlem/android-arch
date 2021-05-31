@@ -12,6 +12,12 @@ object Deps {
         val material = "com.google.android.material:material:1.3.0"
     }
 
+    object Timber {
+        val all = listOf(
+            "com.jakewharton.timber:timber:4.7.1"
+        )
+    }
+
     object Koin {
         val all = listOf(
             "io.insert-koin:koin-android:${Versions.koin}",

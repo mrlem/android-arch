@@ -27,4 +27,5 @@ dependencies {
     api(Deps.Android.viewbinding)
     api(Deps.Koin.all)
     api(Deps.Rx.all)
+    api(Deps.Timber.all)
 }

@@ -11,4 +11,5 @@ dependencies {
     api(kotlin("stdlib"))
     api(Deps.Rx.all)
     api(Deps.Retrofit.all)
+    api(Deps.Timber.all)
 }
