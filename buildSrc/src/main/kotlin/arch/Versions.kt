@@ -9,7 +9,7 @@ object Versions {
     val compileSdkVersion = 30
     val minSdkVersion = 21
     val targetSdkVersion = 30
-    val buildToolsVersion = "30.0.2"
+    val buildToolsVersion = "30.0.3"
 
     // dependencies
     val androidGradlePlugin = "4.2.1"
