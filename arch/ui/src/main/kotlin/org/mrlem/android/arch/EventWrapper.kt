@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.mrlem.sample.arch
+package org.mrlem.android.arch
 
 /**
  * Used as a wrapper for data that is exposed via a LiveData that represents an event.

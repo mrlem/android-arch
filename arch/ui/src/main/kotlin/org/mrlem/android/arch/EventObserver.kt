@@ -1,4 +1,4 @@
-package org.mrlem.sample.arch
+package org.mrlem.android.arch
 
 import androidx.lifecycle.Observer
 

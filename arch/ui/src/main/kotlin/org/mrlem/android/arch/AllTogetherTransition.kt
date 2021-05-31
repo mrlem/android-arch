@@ -1,4 +1,4 @@
-package org.mrlem.sample.arch
+package org.mrlem.android.arch
 
 import android.transition.ChangeBounds
 import android.transition.Fade

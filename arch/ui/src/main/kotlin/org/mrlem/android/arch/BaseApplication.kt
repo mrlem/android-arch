@@ -1,4 +1,4 @@
-package org.mrlem.sample.arch
+package org.mrlem.android.arch
 
 import android.app.Application
 import android.os.StrictMode
