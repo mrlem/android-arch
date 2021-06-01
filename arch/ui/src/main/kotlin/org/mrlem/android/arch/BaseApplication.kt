@@ -23,6 +23,7 @@ import timber.log.Timber.DebugTree
 abstract class BaseApplication : Application() {
 
     protected abstract val modules: List<Module>
+    protected open val strictModeDisabled = false
 
     @CallSuper
     override fun onCreate() {
@@ -45,7 +46,7 @@ abstract class BaseApplication : Application() {
     }
 
     private fun initStrictMode() {
-        if (BuildConfig.DEBUG) {
+        if (!strictModeDisabled && BuildConfig.DEBUG) {
             StrictMode.setThreadPolicy(
                 ThreadPolicy.Builder()
                     .detectAll()
