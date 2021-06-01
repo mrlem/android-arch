@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 
 /**
  * Base fragment to be extended by feature fragments.
@@ -14,13 +15,12 @@ import androidx.fragment.app.Fragment
  * - easy layout declaration
  * - handy callbacks to categorize init code
  */
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment<FragmentViewBinding : ViewBinding> : Fragment() {
 
-    protected abstract val layout: Int
+    abstract val binding: FragmentViewBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(layout, container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
+        binding.root
 
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
