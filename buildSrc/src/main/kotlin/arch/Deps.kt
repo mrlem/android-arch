@@ -3,13 +3,13 @@ package arch
 object Deps {
 
     object Android {
-        const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.4"
-        const val viewbinding = "androidx.databinding:viewbinding:4.2.0"
-        const val activityKtx = "androidx.activity:activity-ktx:1.2.3"
-        const val fragmentKtx = "androidx.fragment:fragment-ktx:1.3.3"
-        const val coreKtx = "androidx.core:core-ktx:1.3.2"
-        const val liveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
-        const val material = "com.google.android.material:material:1.3.0"
+        const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.1"
+        const val viewbinding = "androidx.databinding:viewbinding:7.0.3"
+        const val activityKtx = "androidx.activity:activity-ktx:1.4.0"
+        const val fragmentKtx = "androidx.fragment:fragment-ktx:1.3.6"
+        const val coreKtx = "androidx.core:core-ktx:1.7.0"
+        const val liveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
+        const val material = "com.google.android.material:material:1.4.0"
     }
 
     object Timber {
