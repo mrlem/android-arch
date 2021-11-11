@@ -6,10 +6,9 @@ object Versions {
     const val javaVersion = "1.8"
 
     // android
-    const val compileSdkVersion = 30
+    const val compileSdkVersion = 31
     const val minSdkVersion = 21
-    const val targetSdkVersion = 30
-    const val buildToolsVersion = "30.0.3"
+    const val targetSdkVersion = 31
 
     // dependencies
     const val androidGradlePlugin = "4.2.1"

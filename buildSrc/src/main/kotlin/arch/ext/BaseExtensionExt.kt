@@ -7,7 +7,6 @@ import org.gradle.api.JavaVersion
 
 fun BaseExtension.configureAndroid() {
     setCompileSdkVersion(Versions.compileSdkVersion)
-    buildToolsVersion(Versions.buildToolsVersion)
 
     defaultConfig {
         minSdkVersion(Versions.minSdkVersion)
